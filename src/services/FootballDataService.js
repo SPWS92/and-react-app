@@ -61,7 +61,7 @@ async function fetchTeamData(
 }
 
 /**
- * Sets the active club and fetchs/sets the crime data for the selected club.
+ * Sets the active club and fetches/sets the crime data for the selected club.
  *
  * @param {Object} selectedClub
  * @param {Function} setActiveClub
@@ -75,7 +75,7 @@ async function setSelectedClub(
   setCrimeData
 ) {
   let club = selectedClub;
-  const { result: location } = await PostCodeDataService.getClubLngLat(
+  const { result: location } = await PostCodeDataService.getClubLocationData(
     club.postcode
   );
   club = { ...club, location };
@@ -87,7 +87,7 @@ async function setSelectedClub(
 /**
  * Used to populate extra data on each club.
  *
- * @param {Array|Obj} args - Array of Club or one singular club
+ * @param {Array|Obj} args - Array of Clubs or one singular club
  */
 function populateClubData(args) {
   return Array.isArray(args)

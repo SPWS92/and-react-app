@@ -8,6 +8,8 @@ const PoliceDataProvider = axios.create({
 });
 
 /**
+ * Fetches the police data by longitude and latitude.
+ *
  * @returns {Object|Promise} data relating to the teams for competition 2021
  */
 async function getPoliceDataByLngLat(selectedDate, lng, lat) {
@@ -29,7 +31,7 @@ async function getPoliceDataByLngLat(selectedDate, lng, lat) {
  * Fetches and sets the crime data according to the longitude and latitude.
  *
  * @param {Date} selectedDate
- * @param {Fucntion} setData
+ * @param {Function} setData
  * @param {Object} club
  */
 async function setCrimeData(selectedDate, setData, club) {

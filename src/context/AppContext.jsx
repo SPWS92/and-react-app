@@ -29,8 +29,9 @@ const AppContextProvider = ({ children }) => {
       setCurrentTeams,
       setActiveClub,
       setCrime
-    );
-    setLoading(false);
+    ).then(() => {
+      setLoading(false);
+    });
   }, [selectedDate, setCurrentTeams, setActiveClub, setCrime]);
 
   return (

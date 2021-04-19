@@ -8,15 +8,17 @@ const PostCodeProvider = axios.create({
 });
 
 /**
+ * Fetches the location data for the club.
+ *
  * @returns {Object|Promise} data relating to the teams for competition 2021
  */
-async function getClubLngLat(postcode) {
+async function getClubLocationData(postcode) {
   const { data } = await PostCodeProvider.get(`/postcodes/${postcode}`);
   return data;
 }
 
 const PostCodeDataService = {
-  getClubLngLat,
+  getClubLocationData,
 };
 
 export default PostCodeDataService;

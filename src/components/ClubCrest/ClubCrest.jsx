@@ -15,7 +15,8 @@ const ClubCrest = ({ club }) => {
     <div
       key={id}
       title={name}
-      className={`flex-grow w-28 p-4 flex flex-col items-center hover:bg-gray-400 cursor-pointer ${
+      style={{ width: "100px" }}
+      className={`flex-grow p-2 flex flex-col items-center hover:bg-gray-400 cursor-pointer ${
         id === activeClub.id
           ? "bg-gradient-to-b from-blue-600 via-blue-600 to-blue-400 text-white"
           : "bg-gradient-to-b from-white via-white to-gray-300"
@@ -30,7 +31,7 @@ const ClubCrest = ({ club }) => {
       }
     >
       <img className="h-10" src={crestUrl} alt={`${name} crest`} />
-      <span className="font-semibold text-sm text-center leading-4">
+      <span className="font-semibold text-xs text-center leading-4">
         {shortName}
       </span>
     </div>

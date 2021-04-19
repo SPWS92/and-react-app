@@ -5,12 +5,12 @@ import {
 } from "../";
 
 describe("FootballDataService", () => {
-  describe("populateClubData()", () => {
-    let clubs = [
-      { id: 1, address: "FirstTest road HD2 7DF" },
-      { id: 2, address: "FirstTest road HD3 2IP" },
-    ];
+  const clubs = [
+    { id: 1, address: "FirstTest road HD2 7DF" },
+    { id: 2, address: "FirstTest road HD3 2IP" },
+  ];
 
+  describe("populateClubData()", () => {
     it("should populate postcode on singular club", () => {
       expect(FootballDataService.populateClubData(clubs[0])).toEqual({
         ...clubs[0],
@@ -27,20 +27,17 @@ describe("FootballDataService", () => {
   });
 
   describe("setSelectedClub()", () => {
-    const clubs = FootballDataService.populateClubData([
-      { id: 1, address: "FirstTest road HD2 7DF" },
-      { id: 2, address: "FirstTest road HD3 2IP" },
-    ]);
+    const populatedClubs = FootballDataService.populateClubData(clubs);
 
     beforeEach(() => {
       jest.spyOn(PoliceDataService, "setCrimeData").mockResolvedValue();
       jest
-        .spyOn(PostCodeDataService, "getClubLngLat")
+        .spyOn(PostCodeDataService, "getClubLocationData")
         .mockResolvedValue({ result: { postcode: "HD2 7DF" } });
     });
 
-    it("should call getClubLngLat with correct parameters", () => {
-      const selectedClub = clubs[0];
+    it("should call getClubLocationData with correct parameters", () => {
+      const selectedClub = populatedClubs[0];
       const setActiveClub = () => {};
       const selectedDate = new Date("January 1, 2020");
       const setCrimeData = () => {};
@@ -51,8 +48,8 @@ describe("FootballDataService", () => {
         selectedDate,
         setCrimeData
       );
-      expect(PostCodeDataService.getClubLngLat).toHaveBeenCalledWith(
-        clubs[0].postcode
+      expect(PostCodeDataService.getClubLocationData).toHaveBeenCalledWith(
+        populatedClubs[0].postcode
       );
     });
   });
